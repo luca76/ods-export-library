@@ -3,20 +3,13 @@
 
 ods-php a library to read and write ods files from php.
 
- * Author: Luca Manganelli - Comune di Trento
- * Email:  luca_manganelli@comune.trento.it
- * Initial creation year: 2013 (but published in 2014)
+This library has been forked from eyeOS project and licended under the LGPL3
+terms available at: http://www.gnu.org/licenses/lgpl-3.0.txt (relicenced
+with permission of the copyright holders)
 
+Copyright: Juan Lao Tebar (juanlao@eyeos.org) and Jose Carlos Norte (jose@eyeos.org) - 2008 
 
--------------------------------------------------------------------------------------------------------
-Derived from work of Juan Lao Tebar (juanlao@eyeos.org) and Jose Carlos Norte (jose@eyeos.org) - 2008 
-
-Original comment:
-
-  This library has been forked from eyeOS project and licended under the LGPL3
-  terms available at: http://www.gnu.org/licenses/lgpl-3.0.txt (relicenced
-  with permission of the copyright holders)
-  https://sourceforge.net/projects/ods-php/
+https://sourceforge.net/projects/ods-php/
 
 */
 
@@ -266,14 +259,35 @@ class ods {
 	}
 	
 	function addCell($sheet,$row,$cell,$value,$type,$bold=false) {
+		$value = strtr(
+			$value,
+			array(
+				"<" => "&lt;",
+				">" => "&gt;",
+				'"' => "&quot;",
+				"'" => "&apos;",
+				"&" => "&amp;",
+			)
+		);
+	
 		$this->sheets[$sheet]['rows'][$row][$cell]['attrs'] = array('OFFICE:VALUE-TYPE'=>$type,'OFFICE:VALUE'=>$value);
 		$this->sheets[$sheet]['rows'][$row][$cell]['value'] = $value;
 		$this->sheets[$sheet]['rows'][$row][$cell]['bold'] = $bold;
 	}
 	
 	function editCell($sheet,$row,$cell,$value) {
+		$value = strtr(
+			$value,
+			array(
+				"<" => "&lt;",
+				">" => "&gt;",
+				'"' => "&quot;",
+				"'" => "&apos;",
+				"&" => "&amp;",
+			)
+		);
 		$this->sheets[$sheet]['rows'][$row][$cell]['attrs']['OFFICE:VALUE'] = $value;
-		$this->sheets[$sheet]['rows'][$row][$cell]['value'] = $value;
+		$this->sheets[$sheet]['rows'][$row][$cell]['value'] = xml_entities($value);
 	}
 }
 
