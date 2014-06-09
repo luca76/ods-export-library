@@ -3,13 +3,20 @@
 
 ods-php a library to read and write ods files from php.
 
-This library has been forked from eyeOS project and licended under the LGPL3
-terms available at: http://www.gnu.org/licenses/lgpl-3.0.txt (relicenced
-with permission of the copyright holders)
+ * Author: Luca Manganelli - Comune di Trento
+ * Email:  luca_manganelli@comune.trento.it
+ * Initial creation year: 2013 (but published in 2014)
 
-Copyright: Juan Lao Tebar (juanlao@eyeos.org) and Jose Carlos Norte (jose@eyeos.org) - 2008 
 
-https://sourceforge.net/projects/ods-php/
+-------------------------------------------------------------------------------------------------------
+Derived from work of Juan Lao Tebar (juanlao@eyeos.org) and Jose Carlos Norte (jose@eyeos.org) - 2008 
+
+Original comment:
+
+  This library has been forked from eyeOS project and licended under the LGPL3
+  terms available at: http://www.gnu.org/licenses/lgpl-3.0.txt (relicenced
+  with permission of the copyright holders)
+  https://sourceforge.net/projects/ods-php/
 
 */
 
